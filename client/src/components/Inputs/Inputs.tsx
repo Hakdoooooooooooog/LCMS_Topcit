@@ -23,7 +23,7 @@ const Inputs = ({
   return children ? (
     <div className="w-full relative">
       <input
-        className={`${customIndent || "indent-7"} ${styles["input"]}`}
+        className={`${customIndent || "indent-3"} ${styles["input"]}`}
         type={type}
         placeholder={placeholder}
         name={name}
@@ -34,7 +34,7 @@ const Inputs = ({
     </div>
   ) : (
     <input
-      className={`${customIndent || "indent-7"} ${styles["input"]}`}
+      className={`${customIndent || "indent-3"} ${styles["input"]}`}
       type={type}
       placeholder={placeholder}
       name={name}
