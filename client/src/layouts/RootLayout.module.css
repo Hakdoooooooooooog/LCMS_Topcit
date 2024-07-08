@@ -1,0 +1,29 @@
+.rootLayout {
+  & header {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    & nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+
+      & a {
+        text-decoration: none;
+        color: #000;
+        font-weight: 600;
+        font-size: 1.2rem;
+
+        &:hover {
+          color: #007bff;
+        }
+
+        &:global.active {
+          color: #007bff;
+        }
+      }
+    }
+  }
+}
