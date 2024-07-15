@@ -4,11 +4,11 @@ import React from "react";
 
 interface InputsProps {
   type: string;
-  placeholder?: string | undefined;
-  customIndent?: string | undefined;
-  name?: string;
-
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void | undefined;
+  placeholder?: string;
+  customIndent?: string;
+  id: string | number;
+  name: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
 }
 
@@ -28,8 +28,8 @@ const Inputs = ({
         placeholder={placeholder}
         name={name}
         onChange={onChange}
+        autoComplete="on"
       />
-
       {children}
     </div>
   ) : (
@@ -39,6 +39,7 @@ const Inputs = ({
       placeholder={placeholder}
       name={name}
       onChange={onChange}
+      autoComplete="on"
     />
   );
 };
