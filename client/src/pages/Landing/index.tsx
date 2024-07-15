@@ -1,10 +1,20 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import styles from "./landing.module.css";
-
+import Button from "../../components/Buttons/Button";
 const Landing = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const pathArray = currentPath.split("/");
+  const newPath = pathArray.slice(0, pathArray.length - 1).join("/") || "/";
+
   return (
-    <div>
+    <>
       <div className={styles.container}>
+        <div className={styles.btn_back}>
+          <Button href={newPath} type="button" btnType="tertiary">
+            Go Back
+          </Button>
+        </div>
         <div className={styles.logo}>
           <img src="/topcit-logo.png" alt="logo" />
           <h1>An Online Reviewer</h1>
@@ -12,7 +22,7 @@ const Landing = () => {
 
         <Outlet />
       </div>
-    </div>
+    </>
   );
 };
 

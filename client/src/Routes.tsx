@@ -3,12 +3,12 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home";
 import Landing from "./pages/Landing";
 import RootLayout from "./layouts/RootLayout";
-import { Login } from "./pages/Landing/Login/Login";
-import Register from "./pages/Landing/Register/Register";
-import ForgotPassword from "./pages/Landing/Forgot-Password/ForgotPassword";
+import { Login } from "./pages/Landing/Login";
+import Register from "./pages/Landing/Register";
+import ForgotPassword from "./pages/Landing/Forgot-Password";
 
 export const Routes = createBrowserRouter(
   createRoutesFromElements(

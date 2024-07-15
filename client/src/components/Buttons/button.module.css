@@ -1,13 +1,8 @@
-.button {
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.5);
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
-}
-
 .primary-btn {
-  @apply bg-red-600 text-white font-bold py-2 px-4 rounded;
+  @apply bg-green-600 text-white font-bold py-2 px-4 rounded;
   transition: background-color 0.3s ease-in-out;
   &:hover {
-    @apply bg-red-800;
+    @apply bg-green-800;
   }
 }
 
@@ -16,5 +11,13 @@
   transition: background-color 0.3s ease-in-out;
   &:hover {
     @apply bg-n-3;
+  }
+}
+
+.tertiary-btn {
+  @apply bg-n-2 text-white font-bold py-2 px-4 rounded;
+  transition: background-color 0.3s ease-in-out;
+  &:hover {
+    @apply bg-n-4;
   }
 }
