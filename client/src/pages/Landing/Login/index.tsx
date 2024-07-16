@@ -5,30 +5,18 @@ import styles from "./login.module.css";
 import Button from "../../../components/Buttons/Button";
 import Inputs from "../../../components/Inputs/Inputs";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
-import { useHandleInputsLogin } from "../../../hooks/useHandleInputs";
-
-import { useState } from "react";
+import {
+  useHandleInputsLogin,
+  useShowPassword,
+} from "../../../hooks/useHandleInputs";
 
 export const Login = () => {
   const { handleChange, handleSubmit, error } = useHandleInputsLogin({
     username: "",
     password: "",
   });
-  const [showPassword, setShowPassword] = useState(false);
 
-  const handleShowPassword = () => {
-    setShowPassword(!showPassword);
-
-    const password = document.querySelector("input[name='password']");
-
-    if (password) {
-      if (showPassword) {
-        password.setAttribute("type", "password");
-      } else {
-        password.setAttribute("type", "text");
-      }
-    }
-  };
+  const { showPassword, handleShowPassword } = useShowPassword();
 
   return (
     <div className={styles.form}>
@@ -50,12 +38,12 @@ export const Login = () => {
           {showPassword ? (
             <EyeIcon
               className={`absolute w-7 h-7 -top-[6px] right-2 translate-y-1/2 cursor-pointer`}
-              onClick={handleShowPassword}
+              onClick={() => handleShowPassword({ name: "password" })}
             />
           ) : (
             <EyeSlashIcon
               className={`absolute w-7 h-7 -top-[6px] right-2 translate-y-1/2 cursor-pointer`}
-              onClick={handleShowPassword}
+              onClick={() => handleShowPassword({ name: "password" })}
             />
           )}
         </Inputs>

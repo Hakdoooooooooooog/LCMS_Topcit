@@ -9,12 +9,14 @@ import RootLayout from "./layouts/RootLayout";
 import { Login } from "./pages/Landing/Login";
 import Register from "./pages/Landing/Register";
 import ForgotPassword from "./pages/Landing/Forgot-Password";
+import About from "./pages/About";
 
 export const Routes = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
         <Route path="landing" element={<Landing />}>
           <Route index element={<Login />} />
           <Route path="register" element={<Register />} />

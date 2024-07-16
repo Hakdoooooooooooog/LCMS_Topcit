@@ -1,27 +1,65 @@
 .rootLayout {
+  min-height: 100dvh;
+  background: linear-gradient(
+    180deg,
+    rgba(69, 156, 54, 0.4) 0%,
+    rgba(159, 201, 152, 0.4) 20%,
+    rgba(236, 255, 224, 0.4) 40%,
+    rgba(218, 248, 203, 0.4) 60%,
+    rgba(237, 211, 100, 0.4) 80%,
+    rgba(236, 128, 45, 0.4) 100%
+  );
   & header {
-    background-color: #f8f9fa;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
+    position: fixed;
+    left: 0;
+    right: 0;
     & nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px;
+      padding: 20px;
+      background-color: transparent;
+      margin: 0 50px;
+      border-bottom: 1px solid #000;
 
-      & a {
-        text-decoration: none;
-        color: #000;
-        font-weight: 600;
-        font-size: 1.2rem;
+      & .main_link {
+        & a {
+          & .logo {
+            width: 200px;
+            height: 75px;
+            aspect-ratio: 16/9;
+          }
 
-        &:hover {
-          color: #007bff;
+          &:hover {
+            text-underline-offset: 0.4em;
+            text-decoration: underline;
+            color: #007bff;
+          }
+          &:global.active {
+            color: #007bff;
+          }
         }
+      }
 
-        &:global.active {
-          color: #007bff;
+      & .sub_links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        & a {
+          text-decoration: none;
+          color: #000;
+          font-weight: 600;
+          font-size: 1.2rem;
+          margin-right: 75px;
+
+          &:hover {
+            text-underline-offset: 0.4em;
+            text-decoration: underline;
+            color: #007bff;
+          }
+          &:global.active {
+            color: #007bff;
+          }
         }
       }
     }

@@ -34,7 +34,7 @@ const Button = ({ type, btnType, value, href, children }: ButtonProps) => {
           whileTap={{ scale: 0.95 }}
           type={type}
           value={value}
-          className={`w-2/4 tracking-widest ${styles["button"]} ${
+          className={` w-2/4 tracking-widest ${styles["button"]} ${
             btnType === btnType
               ? `${styles[btnType + "-btn"]}`
               : `${styles["tertiary-btn"]}`
