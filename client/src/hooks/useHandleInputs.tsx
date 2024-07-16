@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEventHandler } from "react";
 export const useHandleInputsLogin = (props: any) => {
   const [inputs, setInputs] = useState({
     ...props,
@@ -87,4 +87,31 @@ export const useHandleInputsRegister = (props: any) => {
   }, [inputs]);
 
   return { handleChange, handleSubmit, error };
+};
+
+export const useShowPassword = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handleShowPassword = ({ name }: { name: string }) => {
+    if (name === "password") {
+      setShowPassword(!showPassword);
+    } else {
+      setShowConfirmPassword(!showConfirmPassword);
+    }
+
+    const passInput = document.querySelector(
+      `input[name=${name}]`
+    ) as HTMLInputElement;
+
+    if (passInput) {
+      if (passInput.type === "password") {
+        passInput.type = "text";
+      } else {
+        passInput.type = "password";
+      }
+    }
+  };
+
+  return { showPassword, showConfirmPassword, handleShowPassword };
 };
