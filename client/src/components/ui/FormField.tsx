@@ -18,7 +18,7 @@ export interface FormFieldProps {
 }
 
 interface OutputProps {
-  error: FormState<FieldValues>["errors"];
+  error: FormState<FieldValues>["errors"][keyof FieldValues];
   register: UseFormRegister<FieldValues>;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -37,9 +37,10 @@ const FormField = (props: FormFieldProps & OutputProps) => {
 
   return (
     <>
-      <FormControl>
+      <FormControl error={props.error ? true : false}>
         <InputLabel htmlFor={props.name}>{props.label}</InputLabel>
         <OutlinedInput
+          {...props.register(props.name)}
           id={props.name}
           type={
             props.name === "password"
@@ -52,7 +53,6 @@ const FormField = (props: FormFieldProps & OutputProps) => {
                 : "password"
               : props.type
           }
-          {...props.register(props.name)}
           onChange={handleChange}
           endAdornment={
             props.name === "password" ? (
@@ -90,7 +90,12 @@ const FormField = (props: FormFieldProps & OutputProps) => {
           label={props.label}
         />
       </FormControl>
-      {props.error[props.name]?.message || ""}
+
+      {props.error && (
+        <p style={{ color: "red", fontSize: "0.8rem" }}>
+          {props.error.message?.toString()}
+        </p>
+      )}
     </>
   );
 };

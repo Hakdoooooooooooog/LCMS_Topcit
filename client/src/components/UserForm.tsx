@@ -49,7 +49,7 @@ const UserForm = (p: UserFormProps & IUserForm) => {
           {...field}
           key={index}
           value={state[field.name]}
-          error={errors}
+          error={errors[field.name]}
           register={register}
           onChange={handleChange}
         />
