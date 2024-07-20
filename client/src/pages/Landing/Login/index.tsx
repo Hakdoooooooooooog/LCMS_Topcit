@@ -1,74 +1,37 @@
 // Date: 07/08/2024
-
-import { NavLink } from "react-router-dom";
 import styles from "./login.module.css";
-import Button from "../../../components/Buttons/Button";
-import Inputs from "../../../components/Inputs/Inputs";
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
-import {
-  useHandleInputsLogin,
-  useShowPassword,
-} from "../../../hooks/useHandleInputs";
+import UserForm from "../../../components/UserForm";
+import { FormFieldProps } from "../../../components/ui/FormField";
+import { LoginSchema } from "../../../schema/UserSchema";
+import { z } from "zod";
+
+type LoginSchema = z.infer<typeof LoginSchema>;
 
 export const Login = () => {
-  const { handleChange, handleSubmit, error } = useHandleInputsLogin({
-    username: "",
-    password: "",
-  });
-
-  const { showPassword, handleShowPassword } = useShowPassword();
-
+  const setFields: Array<FormFieldProps> = [
+    {
+      label: "Email",
+      type: "email",
+      placeholder: "Enter your email",
+      name: "email",
+      value: "",
+    },
+    {
+      label: "Password",
+      type: "password",
+      placeholder: "Enter your password",
+      name: "password",
+      value: "",
+    },
+  ];
   return (
     <div className={styles.form}>
-      <form onSubmit={handleSubmit}>
-        <Inputs
-          type="text"
-          onChange={handleChange}
-          name="username"
-          id="user"
-          placeholder="Username"
-        />
-        <Inputs
-          type="password"
-          name="password"
-          id="pass"
-          onChange={handleChange}
-          placeholder="Password"
-        >
-          {showPassword ? (
-            <EyeIcon
-              className={`absolute w-7 h-7 -top-[6px] right-2 translate-y-1/2 cursor-pointer`}
-              onClick={() => handleShowPassword({ name: "password" })}
-            />
-          ) : (
-            <EyeSlashIcon
-              className={`absolute w-7 h-7 -top-[6px] right-2 translate-y-1/2 cursor-pointer`}
-              onClick={() => handleShowPassword({ name: "password" })}
-            />
-          )}
-        </Inputs>
-
-        <div className={styles.input_validator_error}>
-          {error.hasError && (
-            <p className={styles.error}>
-              <span>{error.error}</span>
-            </p>
-          )}
-        </div>
-
-        <div className={styles.forgot_password}>
-          <NavLink to="forgot-password">Forgot Password?</NavLink>
-        </div>
-
-        <div className={styles.btn_cta}>
-          <Button type="submit" btnType="primary" value="Login">
-            Login
-          </Button>
-          <Button href="register" btnType="secondary">
-            Register
-          </Button>
-        </div>
-      </form>
+      <UserForm
+        fields={setFields}
+        schema={LoginSchema}
+        title="Login"
+        link="Register"
+      />
     </div>
   );
 };
