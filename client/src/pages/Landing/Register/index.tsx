@@ -22,6 +22,13 @@ const Register = () => {
       value: "",
     },
     {
+      label: "Username",
+      type: "text",
+      placeholder: "Enter your username",
+      name: "userName",
+      value: "",
+    },
+    {
       label: "Email",
       type: "email",
       placeholder: "Enter your email",
