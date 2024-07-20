@@ -6,41 +6,9 @@
     flex-direction: column;
     gap: 10px;
 
-    & .form_group {
-      display: flex;
-      gap: 5px;
-
-      & input {
-        flex: 1 1 50%;
-      }
-    }
-
     & label {
       font-size: 16px;
       font-weight: 600;
-    }
-
-    & input {
-      width: 100%;
-      min-height: 40px;
-
-      padding: 0 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-
-    & a {
-      color: #007bff;
-      text-decoration: none;
-      font-size: 14px;
-    }
-  }
-
-  & .input_validator_error {
-    & span {
-      color: red;
-      font-size: 16px;
     }
   }
 
