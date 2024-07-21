@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import styles from "./landing.module.css";
 import { Button } from "@mui/material";
 const Landing = () => {
@@ -11,15 +11,19 @@ const Landing = () => {
     <>
       <div className={styles.container}>
         <div className={styles.btn_back}>
-          <Button href={newPath} variant="contained">
-            Back
-          </Button>
+          <Link to={newPath}>
+            <Button
+              variant="contained"
+              className="!bg-gray-600 !text-white hover:!bg-gray-800 hover:!text-white"
+            >
+              Back
+            </Button>
+          </Link>
         </div>
         <div className={styles.logo}>
           <img src="/topcit-logo.png" alt="logo" />
           <h1>An Online Reviewer</h1>
         </div>
-
         <Outlet />
       </div>
     </>
