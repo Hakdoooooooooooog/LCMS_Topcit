@@ -1,13 +1,13 @@
-import FormField, { FormFieldProps } from "./ui/FormField";
-import { useState } from "react";
+import FormField, { IFormFieldProps } from "./ui/FormInputField";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import styles from "./userForm.module.css";
+import { green, grey } from "@mui/material/colors";
 
 interface UserFormProps {
-  fields: Array<FormFieldProps>;
+  fields: Array<IFormFieldProps>;
   schema: any;
 }
 
@@ -25,20 +25,6 @@ const UserForm = (p: UserFormProps & IUserForm) => {
     resolver: zodResolver(p.schema),
   });
 
-  const getInitialState = () => {
-    let state: { [key: string]: any } = {};
-    p.fields.forEach((field: any) => {
-      state[field.name] = field.value;
-    });
-    return state;
-  };
-
-  const [state, setState] = useState(getInitialState());
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setState((s) => ({ ...s, [e.target.name]: e.target.value }));
-  };
-
   const onSubmit = (data: any) => {
     console.log(data);
   };
@@ -46,12 +32,10 @@ const UserForm = (p: UserFormProps & IUserForm) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       {p.fields.map((field, index) => (
         <FormField
-          {...field}
           key={index}
-          value={state[field.name]}
+          {...field}
           error={errors[field.name]}
           register={register}
-          onChange={handleChange}
         />
       ))}
 
@@ -62,7 +46,7 @@ const UserForm = (p: UserFormProps & IUserForm) => {
           }}
           type="submit"
           variant="contained"
-          color="primary"
+          className="!bg-green-700 hover:!bg-green-800"
         >
           {p.title}
         </Button>
@@ -76,7 +60,7 @@ const UserForm = (p: UserFormProps & IUserForm) => {
               width: "inherit",
             }}
             variant="outlined"
-            color="primary"
+            className="!border-gray-700 !text-gray-700 hover:!bg-gray-700 hover:!text-white"
           >
             {p.link === "Landing" ? "Login" : p.link ?? ""}
           </Button>

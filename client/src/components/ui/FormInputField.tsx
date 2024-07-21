@@ -9,7 +9,7 @@ import { FieldValues, FormState, UseFormRegister } from "react-hook-form";
 import { useHandleShowPassword } from "../../hooks/useHandleShowPassword";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
 
-export interface FormFieldProps {
+export interface IFormFieldProps {
   label: string;
   type: "text" | "email" | "password";
   placeholder: string;
@@ -17,13 +17,12 @@ export interface FormFieldProps {
   value: string | number;
 }
 
-interface OutputProps {
+interface IOutputProps {
   error: FormState<FieldValues>["errors"][keyof FieldValues];
   register: UseFormRegister<FieldValues>;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FormField = (props: FormFieldProps & OutputProps) => {
+const FormInputField = (props: IFormFieldProps & IOutputProps) => {
   const {
     handleClickShowPassword,
     handleMouseDownPassword,
@@ -31,17 +30,13 @@ const FormField = (props: FormFieldProps & OutputProps) => {
     showConfirmPassword,
   } = useHandleShowPassword(props.name);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.onChange(e);
-  };
-
   return (
     <>
-      <FormControl error={props.error ? true : false}>
+      <FormControl required error={props.error ? true : false}>
         <InputLabel htmlFor={props.name}>{props.label}</InputLabel>
         <OutlinedInput
-          {...props.register(props.name)}
           id={props.name}
+          {...props.register(props.name)}
           type={
             props.name === "password"
               ? showPassword
@@ -53,7 +48,6 @@ const FormField = (props: FormFieldProps & OutputProps) => {
                 : "password"
               : props.type
           }
-          onChange={handleChange}
           endAdornment={
             props.name === "password" ? (
               <InputAdornment position="end">
@@ -91,13 +85,13 @@ const FormField = (props: FormFieldProps & OutputProps) => {
         />
       </FormControl>
 
-      {props.error && (
-        <p style={{ color: "red", fontSize: "0.8rem" }}>
-          {props.error.message?.toString()}
+      {props.error?.message && (
+        <p style={{ color: "red", fontSize: "1rem" }}>
+          {props.error.message.toString()}
         </p>
       )}
     </>
   );
 };
 
-export default FormField;
+export default FormInputField;
