@@ -1,38 +1,33 @@
 import { Outlet, useLocation } from "react-router-dom";
 import styles from "./RootLayout.module.css";
 import Header from "../components/ui/Header";
-import { homeRoutes } from "../navigation/Routes";
-import { dotWave } from "ldrs";
-import { green } from "@mui/material/colors";
-import { useLoadingState } from "../hooks/useLoadingState";
-dotWave.register();
+import { homeRoutes } from "../navigation/RouteLinks";
+import { Suspense } from "react";
+import LoadingScreen from "../components/ui/LoadingScreen";
 
 const RootLayout = () => {
   const location = useLocation();
-  const { isLoading } = useLoadingState();
   const isLanding =
     location.pathname === "/landing" ||
     location.pathname === "/landing/register" ||
     location.pathname === "/landing/forgot-password";
   return (
     <>
-      {isLoading ? (
-        <main className={styles.loadingLayout}>
-          <l-dot-wave size="100" speed="1" color={green[700]}></l-dot-wave>
+      {isLanding ? (
+        <main className={styles.rootLayout}>
+          <Suspense fallback={<LoadingScreen />} key={location.key}>
+            <Outlet />
+          </Suspense>
         </main>
       ) : (
-        <>
-          {isLanding ? (
-            <main className={styles.rootLayout}>
+        <div className={styles.rootLayout}>
+          <Header links={homeRoutes} styles={styles} />
+          <main>
+            <Suspense fallback={<LoadingScreen />} key={location.key}>
               <Outlet />
-            </main>
-          ) : (
-            <main className={styles.rootLayout}>
-              <Header links={homeRoutes} styles={styles} />
-              <Outlet />
-            </main>
-          )}
-        </>
+            </Suspense>
+          </main>
+        </div>
       )}
     </>
   );

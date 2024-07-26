@@ -8,8 +8,9 @@ import {
 import { FieldValues, FormState, UseFormRegister } from "react-hook-form";
 import { useHandleShowPassword } from "../../hooks/useHandleShowPassword";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
+import { memo } from "react";
 
-export interface IFormFieldProps {
+export interface IFormFieldInputProps {
   label: string;
   type: "text" | "email" | "password";
   placeholder: string;
@@ -22,7 +23,7 @@ interface IOutputProps {
   register: UseFormRegister<FieldValues>;
 }
 
-const FormInputField = (props: IFormFieldProps & IOutputProps) => {
+const FormInputField = memo((props: IFormFieldInputProps & IOutputProps) => {
   const {
     handleClickShowPassword,
     handleMouseDownPassword,
@@ -92,6 +93,6 @@ const FormInputField = (props: IFormFieldProps & IOutputProps) => {
       )}
     </>
   );
-};
+});
 
 export default FormInputField;

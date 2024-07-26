@@ -1,0 +1,7 @@
+.btn {
+  width: 100%;
+
+  &:global:active {
+    background-color: #f0f0f0;
+  }
+}

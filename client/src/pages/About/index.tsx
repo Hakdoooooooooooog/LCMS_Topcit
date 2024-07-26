@@ -4,11 +4,37 @@ import {
   CardActions,
   CardContent,
   Typography,
+  List,
+  Box,
 } from "@mui/material";
 
 import styles from "./about.module.css";
+import { useEffect } from "react";
 
 const About = () => {
+  useEffect(() => {
+    const getElementHeight = () => {
+      let li = document.querySelectorAll("li");
+
+      li.forEach((item) => {
+        let span = item.getElementsByClassName(
+          styles["list__item--bullet"]
+        )[0] as HTMLElement;
+        let itemHeight = item.clientHeight;
+
+        if (span) {
+          span.style.height = `${itemHeight}px`;
+        }
+      });
+    };
+    getElementHeight();
+    window.addEventListener("resize", getElementHeight);
+
+    return () => {
+      window.removeEventListener("resize", getElementHeight);
+    };
+  }, []);
+
   return (
     <div className={styles.container}>
       <section className={styles.about_wrapper}>
@@ -17,28 +43,66 @@ const About = () => {
             About <span>TOPCIT</span>
           </h1>
 
-          <Card sx={{ padding: 5, width: "fit-content", borderRadius: 5 }}>
-            <h1 className={styles.title}>
+          <Card className={styles.card}>
+            <h1 className={styles.card__title}>
               <span>TOPCIT</span>
             </h1>
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                TOPCIT is a national examination that evaluates the basic
-                abilities of software developers. It is conducted by the
-                Ministry of Science and ICT and supervised by the National IT
-                Industry Promotion Agency (NIPA).
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                The exam consists of 4 sections: Programming, Database, Web, and
-                Basic IT. The exam is conducted in Korean and is held twice a
-                year.
-              </Typography>
-
-              <Typography variant="body2" color="text.secondary">
-                The exam is designed to evaluate the basic abilities of software
-                developers and is used as a reference for hiring in the IT
-                industry.
-              </Typography>
+            <CardContent component={"div"} className={styles.card__content}>
+              <List className={styles.card__lists}>
+                <Typography
+                  className={styles["card__lists--item"]}
+                  variant="body1"
+                  component="li"
+                >
+                  <Box
+                    component="span"
+                    className={styles["list__item--bullet"]}
+                  >
+                    <Box
+                      component={"span"}
+                      className={styles["list__item--bullet-inner"]}
+                    />
+                  </Box>
+                  TOPCIT stands for Test Of Practical Competency in IT.
+                </Typography>
+                <Typography
+                  className={styles["card__lists--item"]}
+                  variant="body1"
+                  component="li"
+                >
+                  <Box
+                    component="span"
+                    className={styles["list__item--bullet"]}
+                  >
+                    <Box
+                      component={"span"}
+                      className={styles["list__item--bullet-inner"]}
+                    />
+                  </Box>
+                  TOPCIT is a performance-evaluation-centered test designed to
+                  diagnose and assess the basic competencies of IT specialists
+                  and software developers working the IT industry. TOPCIT’s
+                  mission is to establish a standardized set of competencies
+                  required in the IT industry for students to follow in order to
+                  be better prepared before graduation.
+                </Typography>
+                <Typography
+                  className={styles["card__lists--item"]}
+                  variant="body1"
+                  component="li"
+                >
+                  <Box
+                    component="span"
+                    className={styles["list__item--bullet"]}
+                  >
+                    <Box
+                      component={"span"}
+                      className={styles["list__item--bullet-inner"]}
+                    />
+                  </Box>
+                  Visit TOPCIT’s official website to know more!
+                </Typography>
+              </List>
             </CardContent>
 
             <CardActions
@@ -61,7 +125,7 @@ const About = () => {
                 href="https://topcit.or.kr"
                 size="small"
               >
-                Learn More
+                Visit TOPCIT
               </Button>
             </CardActions>
           </Card>
