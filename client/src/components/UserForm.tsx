@@ -1,14 +1,14 @@
-import FormField, { IFormFieldProps } from "./ui/FormInputField";
+import FormField, { IFormFieldInputProps } from "./ui/FormInputField";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import styles from "./userForm.module.css";
-import { green, grey } from "@mui/material/colors";
+import { z } from "zod";
 
-interface UserFormProps {
-  fields: Array<IFormFieldProps>;
-  schema: any;
+interface IUserFormProps {
+  fields: Array<IFormFieldInputProps>;
+  schema: z.ZodTypeAny;
 }
 
 interface IUserForm {
@@ -16,18 +16,20 @@ interface IUserForm {
   link?: "Register" | "Landing";
 }
 
-const UserForm = (p: UserFormProps & IUserForm) => {
+const UserForm = (p: IUserFormProps & IUserForm) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({
+    formState: { errors, isSubmitting },
+  } = useForm<z.infer<typeof p.schema>>({
     resolver: zodResolver(p.schema),
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: z.infer<typeof p.schema>) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log(data);
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {p.fields.map((field, index) => (
@@ -41,6 +43,7 @@ const UserForm = (p: UserFormProps & IUserForm) => {
 
       <div className={styles.btn_cta}>
         <Button
+          disabled={isSubmitting}
           style={{
             width: "inherit",
           }}

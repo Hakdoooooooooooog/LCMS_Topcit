@@ -43,7 +43,7 @@ const Header = ({ links, styles }: IHeaderProps) => {
           {links.map((link, index) =>
             link.name === "Home" ? (
               <NavLink key={index} to={link.href}>
-                <img src="logo-small.png" alt="logo" className={styles.logo} />
+                <img src="/logo-small.png" alt="logo" className={styles.logo} />
               </NavLink>
             ) : null
           )}

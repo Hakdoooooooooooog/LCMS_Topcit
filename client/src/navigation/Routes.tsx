@@ -1,30 +1,44 @@
+import { lazy, Suspense } from "react";
 import {
   Route,
+  RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import Home from "../pages/Home";
-import Landing from "../pages/Landing";
-import RootLayout from "../layouts/RootLayout";
-import Login from "../pages/Landing/Login";
-import Register from "../pages/Landing/Register";
-import ForgotPassword from "../pages/Landing/Forgot-Password";
-import About from "../pages/About";
-import LearningHub from "../pages/LearningHub";
-import Assessment from "../pages/Assessment";
-import ProgressTracker from "../pages/ProgressTracker";
-import Profile from "../pages/Profile";
-import Error from "../pages/Error";
+import LoadingScreen from "../components/ui/LoadingScreen";
+import LearningHubLayout from "../layouts/LearningHubLayout";
+import Syllabus from "../pages/LearningHub/Syllabus";
+import Media from "../pages/LearningHub/Media";
 
-export const Routes = createBrowserRouter(
+const Home = lazy(() => import("../pages/Home"));
+const Landing = lazy(() => import("../pages/Landing"));
+const RootLayout = lazy(() => import("../layouts/RootLayout"));
+const Login = lazy(() => import("../pages/Landing/Login"));
+const Register = lazy(() => import("../pages/Landing/Register"));
+const ForgotPassword = lazy(() => import("../pages/Landing/Forgot-Password"));
+const About = lazy(() => import("../pages/About"));
+const Assessment = lazy(() => import("../pages/Assessment"));
+const ProgressTracker = lazy(() => import("../pages/ProgressTracker"));
+const Profile = lazy(() => import("../pages/Profile"));
+const Error = lazy(() => import("../pages/Error"));
+
+export default function Routes() {
+  return (
+    <Suspense fallback={<LoadingScreen />}>
+      <RouterProvider router={Navigation} />
+    </Suspense>
+  );
+}
+
+const Navigation = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
-        <Route path="learning-hub" element={<LearningHub />}>
-          {/* <Route path="syllabus" element={<Syllabus />} />
+        <Route path="learning-hub" element={<LearningHubLayout />}>
+          <Route path="syllabus" element={<Syllabus />} />
           <Route path="media" element={<Media />} />
-          <Route path="contents" element={<Contents />} />
+          {/* <Route path="contents" element={<Contents />} />
           <Route path="resource-library" element={<ResourceLibrary />} /> */}
         </Route>
         <Route path="assessment" element={<Assessment />} />
@@ -48,68 +62,3 @@ export const Routes = createBrowserRouter(
     </>
   )
 );
-
-export const homeRoutes = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Learning Hub",
-    href: "learning-hub",
-    sublinks: [
-      {
-        name: "Syllabus",
-        href: "syllabus",
-      },
-      {
-        name: "Media",
-        href: "media",
-      },
-      {
-        name: "Contents",
-        href: "contents",
-      },
-      {
-        name: "Resource Library",
-        href: "resource-library",
-      },
-    ],
-  },
-  {
-    name: "Assessment",
-    href: "assessment",
-  },
-  {
-    name: "Progress Tracker",
-    href: "progress-tracker",
-    sublinks: [
-      {
-        name: "Contents",
-        href: "contents",
-      },
-      {
-        name: "Assessment",
-        href: "assessment",
-      },
-    ],
-  },
-  {
-    name: "Profile",
-    href: "profile",
-    sublinks: [
-      {
-        name: "Settings",
-        href: "settings",
-      },
-      {
-        name: "Logout",
-        href: "logout",
-      },
-    ],
-  },
-  {
-    name: "Join Us",
-    href: "landing",
-  },
-];

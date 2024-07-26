@@ -1,12 +1,9 @@
-import { IFormFieldProps } from "../../../components/ui/FormInputField";
+import { IFormFieldInputProps } from "../../../components/ui/FormInputField";
 import UserForm from "../../../components/UserForm";
 import { RegisterSchema } from "../../../schema/UserSchema";
 import styles from "./register.module.css";
-import { z } from "zod";
-
-type RegisterSchema = z.infer<typeof RegisterSchema>;
 const Register = () => {
-  const setFields: Array<IFormFieldProps> = [
+  const setFields: Array<IFormFieldInputProps> = [
     {
       label: "First Name",
       type: "text",
