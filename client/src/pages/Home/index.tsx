@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Container } from "@mui/material";
 
 import styles from "./home.module.css";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className={styles.home_container}>
-      <section className={styles.hero_wrapper}>
+      <Container component={"section"} maxWidth="xl">
         <div className={styles.hero_content}>
           <div className={styles.hero_content_left}>
             <h1 className={styles.hero_title}>Welcome, user1!</h1>
@@ -35,7 +35,7 @@ const Home = () => {
             <img src="hero-img.png" alt="Hero" className={styles.hero_image} />
           </div>
         </div>
-      </section>
+      </Container>
     </div>
   );
 };

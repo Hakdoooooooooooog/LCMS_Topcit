@@ -1,5 +1,5 @@
-import { IFormFieldInputProps } from "../../../components/ui/FormInputField";
-import UserForm from "../../../components/UserForm";
+import { IFormFieldInputProps } from "../../../components/ui/FormInputs/FormInputField";
+import UserForm from "../../../components/Form/UserForm";
 import { RegisterSchema } from "../../../schema/UserSchema";
 import styles from "./register.module.css";
 const Register = () => {

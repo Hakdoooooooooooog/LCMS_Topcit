@@ -1,10 +1,20 @@
-import { Box, Button, Card, CardActions, CardContent } from "@mui/material";
+import { Suspense } from "react";
+import { mirage } from "ldrs";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Container,
+} from "@mui/material";
 import { NavLink, Outlet } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import styles from "./LearningHubLayout.module.css";
 
+mirage.register();
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -49,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const LearningHubLayout = () => {
   return (
-    <section className="pt-8 px-20">
+    <Container maxWidth="xl" className="mt-10">
       <h1 className="text-4xl font-semibold mb-12">
         Learning <span className="text-green-800">Hub</span>
       </h1>
@@ -92,10 +102,16 @@ const LearningHubLayout = () => {
 
       <Card>
         <CardContent>
-          <Outlet />
+          <Suspense
+            fallback={
+              <l-mirage size={100} speed={2.5} color={"green"}></l-mirage>
+            }
+          >
+            <Outlet />
+          </Suspense>
         </CardContent>
       </Card>
-    </section>
+    </Container>
   );
 };
 

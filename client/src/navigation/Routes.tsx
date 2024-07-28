@@ -5,11 +5,10 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import LoadingScreen from "../components/ui/LoadingScreen";
-import LearningHubLayout from "../layouts/LearningHubLayout";
-import Syllabus from "../pages/LearningHub/Syllabus";
-import Media from "../pages/LearningHub/Media";
-
+import LoadingScreen from "../components/ui/LoadingScreen/LoadingScreen";
+const LearningHubLayout = lazy(() => import("../layouts/LearningHubLayout"));
+const Syllabus = lazy(() => import("../pages/LearningHub/Syllabus"));
+const Media = lazy(() => import("../pages/LearningHub/Media"));
 const Home = lazy(() => import("../pages/Home"));
 const Landing = lazy(() => import("../pages/Landing"));
 const RootLayout = lazy(() => import("../layouts/RootLayout"));

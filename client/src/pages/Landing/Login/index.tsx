@@ -1,14 +1,14 @@
 // Date: 07/08/2024
 import styles from "./login.module.css";
-import UserForm from "../../../components/UserForm";
-import { IFormFieldProps } from "../../../components/ui/FormInputField";
+import UserForm from "../../../components/Form/UserForm";
+import { IFormFieldInputProps } from "../../../components/ui/FormInputs/FormInputField";
 import { LoginSchema } from "../../../schema/UserSchema";
 import { z } from "zod";
 
 type LoginSchema = z.infer<typeof LoginSchema>;
 
 const Login = () => {
-  const setFields: Array<IFormFieldProps> = [
+  const setFields: Array<IFormFieldInputProps> = [
     {
       label: "Email",
       type: "email",

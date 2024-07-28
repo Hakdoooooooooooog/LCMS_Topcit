@@ -25,47 +25,4 @@
     rgba(237, 211, 100, 0.4) 80%,
     rgba(236, 128, 45, 0.4) 100%
   );
-  & header {
-    & nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      background-color: transparent;
-      margin: 0 50px;
-      border-bottom: 1px solid #000;
-
-      & .main_link {
-        & a {
-          & .logo {
-            width: 200px;
-            height: 75px;
-            aspect-ratio: 16/9;
-          }
-        }
-      }
-
-      & .secondary_links {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        & a {
-          text-decoration: none;
-          color: #000;
-          font-weight: 600;
-          font-size: 1.2rem;
-          margin-right: 75px;
-
-          &:hover {
-            color: green;
-          }
-          &:global.active {
-            text-underline-offset: 0.4em;
-            text-decoration: underline;
-            color: green;
-          }
-        }
-      }
-    }
-  }
 }

@@ -7,16 +7,6 @@
   height: 100vh;
   gap: 50px;
 
-  background: linear-gradient(
-    180deg,
-    rgba(69, 156, 54, 0.4) 0%,
-    rgba(159, 201, 152, 0.4) 20%,
-    rgba(236, 255, 224, 0.4) 40%,
-    rgba(218, 248, 203, 0.4) 60%,
-    rgba(237, 211, 100, 0.4) 80%,
-    rgba(236, 128, 45, 0.4) 100%
-  );
-
   &::after {
     content: "";
     position: absolute;
@@ -36,10 +26,11 @@
       aspect-ratio: 16/9;
     }
   }
+}
 
-  & .btn_back {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
+.btn_back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
 }
