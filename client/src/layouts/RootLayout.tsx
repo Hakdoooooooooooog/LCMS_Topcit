@@ -1,9 +1,9 @@
 import { Outlet, useLocation } from "react-router-dom";
 import styles from "./RootLayout.module.css";
-import Header from "../components/ui/Header";
+import Header from "../components/ui/Header/Header";
 import { homeRoutes } from "../navigation/RouteLinks";
 import { Suspense } from "react";
-import LoadingScreen from "../components/ui/LoadingScreen";
+import LoadingScreen from "../components/ui/LoadingScreen/LoadingScreen";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -21,7 +21,7 @@ const RootLayout = () => {
         </main>
       ) : (
         <div className={styles.rootLayout}>
-          <Header links={homeRoutes} styles={styles} />
+          <Header links={homeRoutes} />
           <main>
             <Suspense fallback={<LoadingScreen />} key={location.key}>
               <Outlet />

@@ -1,4 +1,6 @@
-import FormField, { IFormFieldInputProps } from "./ui/FormInputField";
+import FormField, {
+  IFormFieldInputProps,
+} from "../ui/FormInputs/FormInputField";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@mui/material";

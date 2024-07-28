@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import styles from "./landing.module.css";
-import { Button } from "@mui/material";
+import { Button, Container } from "@mui/material";
 const Landing = () => {
   const location = useLocation();
   const currentPath = location.pathname;
@@ -9,23 +9,25 @@ const Landing = () => {
 
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.btn_back}>
-          <Link to={newPath}>
-            <Button
-              variant="contained"
-              className="!bg-gray-600 !text-white hover:!bg-gray-800 hover:!text-white"
-            >
-              Back
-            </Button>
-          </Link>
-        </div>
-        <div className={styles.logo}>
-          <img src="/topcit-logo.png" alt="logo" />
-          <h1>An Online Reviewer</h1>
-        </div>
-        <Outlet />
+      <div className={styles.btn_back}>
+        <Link to={newPath}>
+          <Button
+            variant="contained"
+            className="!bg-gray-600 !text-white hover:!bg-gray-800 hover:!text-white"
+          >
+            Back
+          </Button>
+        </Link>
       </div>
+      <Container maxWidth="md">
+        <div className={styles.container}>
+          <div className={styles.logo}>
+            <img src="/topcit-logo.png" alt="logo" />
+            <h1>An Online Reviewer</h1>
+          </div>
+          <Outlet />
+        </div>
+      </Container>
     </>
   );
 };
