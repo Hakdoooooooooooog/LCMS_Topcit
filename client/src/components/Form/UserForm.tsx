@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import styles from "./userForm.module.css";
 import { z } from "zod";
+import axios from "axios";
 
 interface IUserFormProps {
   fields: Array<IFormFieldInputProps>;
@@ -28,8 +29,27 @@ const UserForm = (p: IUserFormProps & IUserForm) => {
   });
 
   const onSubmit = async (data: z.infer<typeof p.schema>) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+    if (p.title === "Register") {
+      try {
+        await axios
+          .post("http://localhost:3000/api/user/register", data)
+          .then((res) => {
+            console.log(res.data);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        await axios
+          .post("http://localhost:3000/api/user/login", data)
+          .then((res) => {
+            console.log(res.data);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (

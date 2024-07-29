@@ -10,6 +10,6 @@ router.post(
   validateData({ schema: UserRegisterSchema }),
   registerUser
 );
-router.get("/login", validateData({ schema: UserLoginSchema }), loginUser);
+router.post("/login", validateData({ schema: UserLoginSchema }), loginUser);
 
 export default router;
