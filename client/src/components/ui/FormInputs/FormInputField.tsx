@@ -38,6 +38,7 @@ const FormInputField = memo((props: IFormFieldInputProps & IOutputProps) => {
         <OutlinedInput
           id={props.name}
           {...props.register(props.name)}
+          autoComplete="on"
           type={
             props.name === "password"
               ? showPassword
