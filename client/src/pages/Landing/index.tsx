@@ -19,14 +19,12 @@ const Landing = () => {
           </Button>
         </Link>
       </div>
-      <Container maxWidth="md">
-        <div className={styles.container}>
-          <div className={styles.logo}>
-            <img src="/topcit-logo.png" alt="logo" />
-            <h1>An Online Reviewer</h1>
-          </div>
-          <Outlet />
+      <Container component={"div"} className={styles.container} maxWidth="md">
+        <div className={styles.logo}>
+          <img src="/topcit-logo.webp" alt="logo" />
+          <h1>An Online Reviewer</h1>
         </div>
+        <Outlet />
       </Container>
     </>
   );

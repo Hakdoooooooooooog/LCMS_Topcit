@@ -50,7 +50,7 @@ const Header = ({ links }: IHeaderProps) => {
                 link.name === "Home" ? (
                   <NavLink key={index} to={link.href}>
                     <img
-                      src="/logo-small.png"
+                      src="/logo-small.webp"
                       alt="logo"
                       className={HeaderStyle.logo}
                     />
@@ -137,7 +137,7 @@ const Header = ({ links }: IHeaderProps) => {
                 link.name === "Home" ? (
                   <NavLink key={index} to={link.href}>
                     <img
-                      src="/logo-small.png"
+                      src="/logo-small.webp"
                       alt="logo"
                       className={HeaderStyle.logo}
                     />

@@ -1,3 +1,6 @@
 .btn {
-  width: 100%;
+  @apply w-full;
+}
+.cardActions {
+  @apply flex-wrap gap-4;
 }

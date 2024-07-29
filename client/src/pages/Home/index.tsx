@@ -31,8 +31,8 @@ const Home = () => {
               </Button>
             </Link>
           </div>
-          <div className={styles.hero_content_right}>
-            <img src="hero-img.png" alt="Hero" className={styles.hero_image} />
+          <div role="presentation" className={styles.hero_content_right}>
+            <img src="hero-img.webp" alt="Hero" className={styles.hero_image} />
           </div>
         </div>
       </Container>
