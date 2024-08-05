@@ -12,4 +12,14 @@
 
 body {
   font-family: var(--font-poppins);
+  font-size: 16px;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply bg-green-800;
+  border-radius: 10px;
 }

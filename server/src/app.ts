@@ -1,12 +1,16 @@
-import express from "express";
+import express, { NextFunction } from "express";
 import bodyParser from "body-parser";
 import router from "./api/Components/user/routes";
 import "dotenv/config";
 import cors from "cors";
 const app = express();
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  optionsSuccessStatus: 200,
+};
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Routes for user
 app.use("/api/user", router);

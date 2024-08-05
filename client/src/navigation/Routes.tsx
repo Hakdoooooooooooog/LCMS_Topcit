@@ -6,6 +6,8 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import LoadingScreen from "../components/ui/LoadingScreen/LoadingScreen";
+import Content from "../pages/LearningHub/Content";
+import Main from "../pages/LearningHub/Main";
 const LearningHubLayout = lazy(() => import("../layouts/LearningHubLayout"));
 const Syllabus = lazy(() => import("../pages/LearningHub/Syllabus"));
 const Media = lazy(() => import("../pages/LearningHub/Media"));
@@ -35,7 +37,9 @@ const Navigation = createBrowserRouter(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route path="learning-hub" element={<LearningHubLayout />}>
+          <Route index element={<Main />} />
           <Route path="syllabus" element={<Syllabus />} />
+          <Route path="syllabus/:content" element={<Content />} />
           <Route path="media" element={<Media />} />
           {/* <Route path="contents" element={<Contents />} />
           <Route path="resource-library" element={<ResourceLibrary />} /> */}
