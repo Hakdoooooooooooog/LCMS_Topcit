@@ -4,7 +4,7 @@ import { mirage } from "ldrs";
 import { Box, CardActions, Container, Tooltip } from "@mui/material";
 import { LibraryBooks, MenuBook, PermMedia, Toc } from "@mui/icons-material";
 import styles from "./LearningHubLayout.module.css";
-import SearchInput from "../components/SearchInput/SearchInput";
+import SearchInput from "../components/ui/SearchInput/SearchInput";
 mirage.register();
 
 const LearningHubLayout = () => {

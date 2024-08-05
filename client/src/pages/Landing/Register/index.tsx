@@ -1,4 +1,4 @@
-import UserForm from "../../../components/Form/UserForm";
+import UserForm from "../../../components/ui/Form/UserForm";
 import { setRegisterFields } from "../../../lib/constants";
 import { RegisterSchema } from "../../../schema/UserSchema";
 import { z } from "zod";

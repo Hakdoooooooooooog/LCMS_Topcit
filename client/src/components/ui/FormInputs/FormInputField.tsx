@@ -6,7 +6,7 @@ import {
   OutlinedInput,
 } from "@mui/material";
 import { FieldValues, FormState, UseFormRegister } from "react-hook-form";
-import { useHandleShowPassword } from "../../lib/hooks/useHandleShowPassword";
+import { useHandleShowPassword } from "../../../lib/hooks/useHandleShowPassword";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
 
 export interface IFormFieldInputProps {

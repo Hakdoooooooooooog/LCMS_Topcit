@@ -12,7 +12,7 @@ import {
   Toolbar,
   Tooltip,
 } from "@mui/material";
-import { LinkProps } from "../../lib/types";
+import { LinkProps } from "../../../lib/types";
 
 interface IHeaderProps {
   links: LinkProps[];

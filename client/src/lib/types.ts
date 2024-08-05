@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { IFormFieldInputProps } from "../components/FormInputs/FormInputField";
+import { IFormFieldInputProps } from "../components/ui/FormInputs/FormInputField";
 
 // Link props types
 export type LinkProps = {

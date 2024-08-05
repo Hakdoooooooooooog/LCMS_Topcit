@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { z } from "zod";
-import { UserFormProps } from "../../lib/types";
+import { UserFormProps } from "../../../lib/types";
 import FormField from "../FormInputs/FormInputField";
 import styles from "./userForm.module.css";
 import axios from "axios";

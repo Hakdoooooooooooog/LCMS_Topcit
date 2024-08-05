@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
+import LoadingScreen from "../components/ui/LoadingScreen/LoadingScreen";
 
 const Content = lazy(() => import("../pages/LearningHub/Content"));
 const Main = lazy(() => import("../pages/LearningHub/Main"));

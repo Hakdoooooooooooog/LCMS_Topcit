@@ -1,6 +1,6 @@
 import { styled, alpha } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
-import { IFormFieldInputProps } from "../components/FormInputs/FormInputField";
+import { IFormFieldInputProps } from "../components/ui/FormInputs/FormInputField";
 
 // Search bar styles
 

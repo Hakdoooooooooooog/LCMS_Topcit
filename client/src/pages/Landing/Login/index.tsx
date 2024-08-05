@@ -1,6 +1,6 @@
 // Date: 07/08/2024
 import styles from "./login.module.css";
-import UserForm from "../../../components/Form/UserForm";
+import UserForm from "../../../components/ui/Form/UserForm";
 import { LoginSchema } from "../../../schema/UserSchema";
 import { z } from "zod";
 import { setLoginFields } from "../../../lib/constants";
