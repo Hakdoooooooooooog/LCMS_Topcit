@@ -6,9 +6,8 @@ import {
   OutlinedInput,
 } from "@mui/material";
 import { FieldValues, FormState, UseFormRegister } from "react-hook-form";
-import { useHandleShowPassword } from "../../../hooks/useHandleShowPassword";
+import { useHandleShowPassword } from "../../lib/hooks/useHandleShowPassword";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
-import { memo } from "react";
 
 export interface IFormFieldInputProps {
   label: string;
@@ -23,7 +22,7 @@ interface IOutputProps {
   register: UseFormRegister<FieldValues>;
 }
 
-const FormInputField = memo((props: IFormFieldInputProps & IOutputProps) => {
+const FormInputField = (props: IFormFieldInputProps & IOutputProps) => {
   const {
     handleClickShowPassword,
     handleMouseDownPassword,
@@ -94,6 +93,6 @@ const FormInputField = memo((props: IFormFieldInputProps & IOutputProps) => {
       )}
     </>
   );
-});
+};
 
 export default FormInputField;

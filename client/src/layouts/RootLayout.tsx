@@ -1,36 +1,30 @@
 import { Outlet, useLocation } from "react-router-dom";
 import styles from "./RootLayout.module.css";
-import Header from "../components/ui/Header/Header";
-import { homeRoutes } from "../navigation/RouteLinks";
+import Header from "../components/Header/Header";
+import { homeRoutes, path } from "../lib/constants";
 import { Suspense } from "react";
-import LoadingScreen from "../components/ui/LoadingScreen/LoadingScreen";
+import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 import { Container } from "@mui/material";
 
 const RootLayout = () => {
   const location = useLocation();
-  const isLanding =
-    location.pathname === "/landing" ||
-    location.pathname === "/landing/register" ||
-    location.pathname === "/landing/forgot-password";
   return (
     <>
-      {isLanding ? (
+      {path.includes(location.pathname) ? (
         <main className={styles.rootLayout}>
           <Suspense fallback={<LoadingScreen />} key={location.key}>
             <Outlet />
           </Suspense>
         </main>
       ) : (
-        <div className={styles.rootLayout}>
+        <main className={styles.rootLayout}>
           <Header links={homeRoutes} />
-          <main>
-            <Container maxWidth={"xl"}>
-              <Suspense fallback={<LoadingScreen />} key={location.key}>
-                <Outlet />
-              </Suspense>
-            </Container>
-          </main>
-        </div>
+          <Container maxWidth={"xl"}>
+            <Suspense fallback={<LoadingScreen />} key={location.key}>
+              <Outlet />
+            </Suspense>
+          </Container>
+        </main>
       )}
     </>
   );

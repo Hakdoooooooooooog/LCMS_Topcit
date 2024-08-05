@@ -12,15 +12,10 @@ import {
   Toolbar,
   Tooltip,
 } from "@mui/material";
-
-interface ILink {
-  name: string;
-  href: string;
-  sublinks?: Array<ILink>;
-}
+import { LinkProps } from "../../lib/types";
 
 interface IHeaderProps {
-  links: Array<ILink>;
+  links: LinkProps[];
 }
 
 const Header = ({ links }: IHeaderProps) => {
@@ -60,13 +55,23 @@ const Header = ({ links }: IHeaderProps) => {
             </Box>
 
             <Box className={HeaderStyle.secondary_links}>
-              {links.map((link, index) =>
-                link.name !== "Home" ? (
-                  <NavLink key={index} to={link.href}>
-                    {link.name}
-                  </NavLink>
-                ) : null
-              )}
+              {false // TODO: Add condition for authenticated user
+                ? links
+                    .filter(
+                      (link) => link.name !== "Home" && link.name !== "Join Us"
+                    )
+                    .map((link, index) => (
+                      <NavLink key={index} to={link.href}>
+                        {link.name}
+                      </NavLink>
+                    ))
+                : links
+                    .filter((link) => link.name === "Join Us")
+                    .map((link, index) => (
+                      <NavLink key={index} to={link.href}>
+                        {link.name}
+                      </NavLink>
+                    ))}
             </Box>
           </Box>
 
@@ -112,17 +117,23 @@ const Header = ({ links }: IHeaderProps) => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
             >
-              {links.map((link, index) =>
-                link.name !== "Home" ? (
-                  <MenuItem
-                    disableRipple={true}
-                    key={index}
-                    onClick={handleCloseNavMenu}
-                  >
-                    <NavLink to={link.href}>{link.name}</NavLink>
-                  </MenuItem>
-                ) : null
-              )}
+              {false // TODO: Add condition for authenticated user
+                ? links
+                    .filter(
+                      (link) => link.name !== "Home" && link.name !== "Join Us"
+                    )
+                    .map((link, index) => (
+                      <NavLink key={index} to={link.href}>
+                        {link.name}
+                      </NavLink>
+                    ))
+                : links
+                    .filter((link) => link.name === "Join Us")
+                    .map((link, index) => (
+                      <NavLink key={index} to={link.href}>
+                        {link.name}
+                      </NavLink>
+                    ))}
             </Menu>
 
             <Box

@@ -34,6 +34,7 @@ const items = [
 ];
 
 function Syllabus() {
+  // Dynamically set the height of the bullet to match the height of the content
   useEffect(() => {
     const getElementHeight = () => {
       const accordionDetailsEl = document.querySelectorAll(
@@ -52,64 +53,60 @@ function Syllabus() {
       });
     };
     getElementHeight();
-
     window.addEventListener("resize", getElementHeight);
-
     return () => {
       window.removeEventListener("resize", getElementHeight);
     };
   }, []);
   return (
-    <>
-      <Box component={"section"} className="flex flex-col gap-5">
-        {items.map((item, index) => (
-          <Accordion key={index}>
-            <AccordionSummary
-              aria-controls={`panel1a-content-${index}`}
-              id={`panel1a-header-${index}`}
-              expandIcon={
-                <Add
-                  sx={{
-                    color: "green",
-                  }}
-                />
-              }
-            >
-              {item.title}
-            </AccordionSummary>
-            <AccordionDetails
-              classes={{
-                root: styles.accordionDetailStyles,
-              }}
-            >
-              <Box component="span" className={styles["list__item--bullet"]}>
-                <Box
-                  component={"span"}
-                  className={styles["list__item--bullet-inner"]}
-                />
-              </Box>
+    <Box component={"section"} className="flex flex-col gap-5">
+      {items.map((item, index) => (
+        <Accordion key={index}>
+          <AccordionSummary
+            aria-controls={`panel1a-content-${index}`}
+            id={`panel1a-header-${index}`}
+            expandIcon={
+              <Add
+                sx={{
+                  color: "green",
+                }}
+              />
+            }
+          >
+            {item.title}
+          </AccordionSummary>
+          <AccordionDetails
+            classes={{
+              root: styles.accordionDetailStyles,
+            }}
+          >
+            <Box component="span" className={styles["list__item--bullet"]}>
+              <Box
+                component={"span"}
+                className={styles["list__item--bullet-inner"]}
+              />
+            </Box>
 
-              <Box component={"div"} sx={{ flexGrow: 1 }}>
-                <Typography sx={{ whiteSpace: "pre-line" }}>
-                  {item.content}
-                </Typography>
+            <Box component={"div"} sx={{ flexGrow: 1 }}>
+              <Typography sx={{ whiteSpace: "pre-line" }}>
+                {item.content}
+              </Typography>
 
-                <Button
-                  variant="contained"
-                  sx={{
-                    marginTop: "1rem",
-                    backgroundColor: "green",
-                    color: "white",
-                  }}
-                >
-                  Start Learning
-                </Button>
-              </Box>
-            </AccordionDetails>
-          </Accordion>
-        ))}
-      </Box>
-    </>
+              <Button
+                variant="contained"
+                sx={{
+                  marginTop: "1rem",
+                  backgroundColor: "green",
+                  color: "white",
+                }}
+              >
+                Start Learning
+              </Button>
+            </Box>
+          </AccordionDetails>
+        </Accordion>
+      ))}
+    </Box>
   );
 }
 

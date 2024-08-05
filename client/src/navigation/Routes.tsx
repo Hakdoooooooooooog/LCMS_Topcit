@@ -5,9 +5,10 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import LoadingScreen from "../components/ui/LoadingScreen/LoadingScreen";
-import Content from "../pages/LearningHub/Content";
-import Main from "../pages/LearningHub/Main";
+import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
+
+const Content = lazy(() => import("../pages/LearningHub/Content"));
+const Main = lazy(() => import("../pages/LearningHub/Main"));
 const LearningHubLayout = lazy(() => import("../layouts/LearningHubLayout"));
 const Syllabus = lazy(() => import("../pages/LearningHub/Syllabus"));
 const Media = lazy(() => import("../pages/LearningHub/Media"));
@@ -23,14 +24,6 @@ const ProgressTracker = lazy(() => import("../pages/ProgressTracker"));
 const Profile = lazy(() => import("../pages/Profile"));
 const Error = lazy(() => import("../pages/Error"));
 
-export default function Routes() {
-  return (
-    <Suspense fallback={<LoadingScreen />}>
-      <RouterProvider router={Navigation} />
-    </Suspense>
-  );
-}
-
 const Navigation = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -39,20 +32,12 @@ const Navigation = createBrowserRouter(
         <Route path="learning-hub" element={<LearningHubLayout />}>
           <Route index element={<Main />} />
           <Route path="syllabus" element={<Syllabus />} />
-          <Route path="syllabus/:content" element={<Content />} />
+          <Route path="syllabus/:contentID" element={<Content />} />
           <Route path="media" element={<Media />} />
-          {/* <Route path="contents" element={<Contents />} />
-          <Route path="resource-library" element={<ResourceLibrary />} /> */}
         </Route>
         <Route path="assessment" element={<Assessment />} />
-        <Route path="progress-tracker" element={<ProgressTracker />}>
-          {/* <Route path="contents" element={<Contents />} />
-          <Route path="assessment" element={<Assessment />} /> */}
-        </Route>
-        <Route path="profile" element={<Profile />}>
-          {/* <Route path="settings" element={<Settings />} />
-          <Route path="logout" element={<Logout />} /> */}
-        </Route>
+        <Route path="progress-tracker" element={<ProgressTracker />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="about" element={<About />} />
         <Route path="landing" element={<Landing />}>
           <Route index element={<Login />} />
@@ -65,3 +50,11 @@ const Navigation = createBrowserRouter(
     </>
   )
 );
+
+export default function Routes() {
+  return (
+    <Suspense fallback={<LoadingScreen />}>
+      <RouterProvider router={Navigation} />
+    </Suspense>
+  );
+}

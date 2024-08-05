@@ -12,15 +12,16 @@ import styles from "./about.module.css";
 import { useEffect } from "react";
 
 const About = () => {
+  // Dynamically set the height of the bullet point to match the height of the list item
   useEffect(() => {
     const getElementHeight = () => {
-      let li = document.querySelectorAll("li");
+      let liEl = document.querySelectorAll("li");
 
-      li.forEach((item) => {
-        let span = item.getElementsByClassName(
+      liEl.forEach((el) => {
+        let span = el.getElementsByClassName(
           styles["list__item--bullet"]
         )[0] as HTMLElement;
-        let itemHeight = item.clientHeight;
+        let itemHeight = el.clientHeight;
 
         if (span) {
           span.style.height = `${itemHeight}px`;
@@ -36,7 +37,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className={styles.about_wrapper}>
+    <section className={styles.about_wrapper}>
       <div className={styles.topcit}>
         <h1 className={styles.title}>
           About <span>TOPCIT</span>
@@ -120,7 +121,7 @@ const About = () => {
           </CardActions>
         </Card>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,25 +1,19 @@
-import FormField, {
-  IFormFieldInputProps,
-} from "../ui/FormInputs/FormInputField";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import styles from "./userForm.module.css";
 import { z } from "zod";
+import { UserFormProps } from "../../lib/types";
+import FormField from "../FormInputs/FormInputField";
+import styles from "./userForm.module.css";
 import axios from "axios";
-
-interface IUserFormProps {
-  fields: Array<IFormFieldInputProps>;
-  schema: z.ZodTypeAny;
-}
 
 interface IUserForm {
   title: string;
   link?: "Register" | "Landing";
 }
 
-const UserForm = (p: IUserFormProps & IUserForm) => {
+const UserForm = (p: UserFormProps & IUserForm) => {
   const {
     register,
     handleSubmit,

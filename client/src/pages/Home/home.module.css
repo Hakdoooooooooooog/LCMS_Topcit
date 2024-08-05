@@ -1,9 +1,9 @@
-.home_container {
+.hero_section {
   margin-top: 100px;
   & .hero_content {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     margin: 0 auto;
 
     & .hero_content_left {

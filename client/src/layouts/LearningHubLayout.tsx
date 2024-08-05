@@ -1,11 +1,10 @@
 import { Suspense } from "react";
+import { NavLink, Outlet } from "react-router-dom";
 import { mirage } from "ldrs";
 import { Box, CardActions, Container, Tooltip } from "@mui/material";
-import { NavLink, Outlet } from "react-router-dom";
-import styles from "./LearningHubLayout.module.css";
-import SearchInput from "../components/ui/SearchInput/SearchInput";
 import { LibraryBooks, MenuBook, PermMedia, Toc } from "@mui/icons-material";
-
+import styles from "./LearningHubLayout.module.css";
+import SearchInput from "../components/SearchInput/SearchInput";
 mirage.register();
 
 const LearningHubLayout = () => {

@@ -1,16 +1,15 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import styles from "./landing.module.css";
 import { Button, Container } from "@mui/material";
+import { setNewPath } from "../../lib/utils";
 const Landing = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  const pathArray = currentPath.split("/");
-  const newPath = pathArray.slice(0, pathArray.length - 1).join("/") || "/";
 
   return (
     <>
       <div className={styles.btn_back}>
-        <Link to={newPath}>
+        <Link to={setNewPath(currentPath)}>
           <Button
             variant="contained"
             className="!bg-gray-600 !text-white hover:!bg-gray-800 hover:!text-white"
@@ -21,7 +20,9 @@ const Landing = () => {
       </div>
       <Container
         component={"section"}
-        className={styles.container}
+        classes={{
+          root: styles.container,
+        }}
         maxWidth="md"
       >
         <div className={styles.logo}>
