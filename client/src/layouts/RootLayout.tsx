@@ -4,6 +4,7 @@ import Header from "../components/ui/Header/Header";
 import { homeRoutes } from "../navigation/RouteLinks";
 import { Suspense } from "react";
 import LoadingScreen from "../components/ui/LoadingScreen/LoadingScreen";
+import { Container } from "@mui/material";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -23,9 +24,11 @@ const RootLayout = () => {
         <div className={styles.rootLayout}>
           <Header links={homeRoutes} />
           <main>
-            <Suspense fallback={<LoadingScreen />} key={location.key}>
-              <Outlet />
-            </Suspense>
+            <Container maxWidth={"xl"}>
+              <Suspense fallback={<LoadingScreen />} key={location.key}>
+                <Outlet />
+              </Suspense>
+            </Container>
           </main>
         </div>
       )}

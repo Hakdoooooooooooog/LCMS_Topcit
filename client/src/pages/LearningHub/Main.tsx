@@ -1,6 +1,8 @@
+// Desc: Main page of the Learning Hub
+
 import { Card, CardContent } from "@mui/material";
 
-const Media = () => {
+const Main = () => {
   return (
     <>
       <Card>
@@ -9,8 +11,8 @@ const Media = () => {
             Learning <span className="text-green-800">Hub</span>
           </h1>
           <p>
-            This is the media page of the Learning Hub. Here you can find the
-            media for the course you are enrolled in.
+            This is the main page of the Learning Hub. Here you can find the
+            syllabus for the course you are enrolled in.
           </p>
         </CardContent>
       </Card>
@@ -18,4 +20,4 @@ const Media = () => {
   );
 };
 
-export default Media;
+export default Main;

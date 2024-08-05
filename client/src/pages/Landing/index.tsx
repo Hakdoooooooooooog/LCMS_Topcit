@@ -19,7 +19,11 @@ const Landing = () => {
           </Button>
         </Link>
       </div>
-      <Container component={"div"} className={styles.container} maxWidth="md">
+      <Container
+        component={"section"}
+        className={styles.container}
+        maxWidth="md"
+      >
         <div className={styles.logo}>
           <img src="/topcit-logo.webp" alt="logo" />
           <h1>An Online Reviewer</h1>
